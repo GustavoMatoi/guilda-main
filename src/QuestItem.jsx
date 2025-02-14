@@ -8,7 +8,7 @@ export default function QuestItem(props) {
 
 
     return (
-        <div className='flex gap-4 flex-col md:flex-row items-center'>
+        <div className='flex gap-4 flex-col md:flex-row items-center' data-testid="questItem">
             <div className='flex gap-4 items-center w-full sm<:w-[80%]'>
                 <input
                     disabled={concluded}
@@ -31,16 +31,20 @@ export default function QuestItem(props) {
                         defaultValue={title}
                         onChange={(evento) => setTitle(evento.target.value)}
                         className='rounded-full bg-secondary pl-2 w-full input-sm flex focus:outline-none'
+                        data-testid="input"
                     /> :
-                    <p className='break-words'>
+                    <p className='break-words' data-testid="title">
                         {props.quest.title}
                     </p>
                 }
             </div>
-            <div className='flex gap-4 w-full sm:w-fit justify-center'>
+            <div className='flex gap-4 w-full sm:w-fit justify-center'
+             data-testid="buttons"
+            >
 
                 {!concluded && (
                     <button
+                        data-testid="editButton"
                         onClick={() => {
                             if (editMode) props.saveEditQuest(props.quest, title);
                             setEditMode(!editMode);
